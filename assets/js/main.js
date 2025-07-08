@@ -45,6 +45,10 @@
 
 		// 01. preloader
 		// $("#preloader").fadeOut(2000);
+
+		document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('.preloader').style.display = 'none';
+});
 		
 		$(window).on("load", function() {
 			// 02. primary navbar sticky
