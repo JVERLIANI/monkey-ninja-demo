@@ -736,20 +736,26 @@
 		// 26. project horizontal move
 		if ($(".project-sl").length > 0) {
 			let sections = gsap.utils.toArray(".project-sl__single");
+
 			gsap.to(sections, {
 				xPercent: -100 * (sections.length - 1),
-				ease: "none",
+				ease: "power1.out",
 				scrollTrigger: {
 					trigger: ".project-sl",
+					start: "top top",
+					end: () => "+=" + $(".project-sl").width(),
+					scrub: 0.5,
 					pin: true,
-					invalidateOnRefresh: true,
-					start: "center center",
-					scrub: 1,
-					snap: 1 / (sections.length - 1),
-					end: () => "+=" + $(".project-sl").innerWidth(),
-				},
+					anticipatePin: 1,
+					snap: {
+						snapTo: 1 / (sections.length - 1),
+						duration: { min: 0.2, max: 0.4 },
+						ease: "power1.inOut"
+					}
+				}
 			});
 		}
+
 
 		// 27. split title
 		if (device_width > 576) {

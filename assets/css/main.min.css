@@ -4805,11 +4805,16 @@ i {
 }
 .project-sl {
   display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
   align-items: center;
   position: relative;
-  overflow-x: clip;
+  overflow: hidden;
 }
 .project-sl .project-sl__single {
+  flex: 0 0 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
   padding: 0px 15px;
   max-width: 360px;
   min-width: 360px;
