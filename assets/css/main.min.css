@@ -23,6 +23,7 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 *::-moz-selection {
   color: #fff;
@@ -36,6 +37,7 @@ html {
   overflow-x: hidden;
   overflow-y: auto;
   height: auto;
+  scroll-behavior: smooth;
 }
 body {
   font-family: var(--theme-font);
@@ -48,6 +50,7 @@ body {
   overflow-y: auto;
   height: auto;
   max-width: 100vw;
+  scroll-behavior: smooth;
 }
 body::-webkit-scrollbar {
   width: 5px;
@@ -2785,6 +2788,11 @@ i {
   z-index: 1;
   position: relative;
 }
+.agency-white {
+  background-color: var(--white);
+  z-index: 1;
+  position: relative;
+}
 .agency .agency__thumb {
   position: relative;
   overflow: hidden;
@@ -2875,6 +2883,104 @@ i {
   right: 4%;
   max-width: 25vw;
   z-index: -1;
+}
+.agency-white .agency__thumb {
+  position: relative;
+  overflow: hidden;
+  text-align: end;
+  z-index: 1;
+}
+.agency-white .agency__thumb::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 10%;
+  width: 40px;
+  height: 40px;
+  background-image: url("../images/agency/dot.png");
+  background-size: cover;
+  z-index: -1;
+}
+.agency-white .agency__thumb::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 40px;
+  height: 40px;
+  background-image: url("../images/agency/dot.png");
+  background-size: cover;
+  z-index: -1;
+}
+.agency-white .agency__thumb img {
+  max-width: 100%;
+  height: auto;
+}
+.agency-white .agency__thumb .thumb-one {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  max-width: 80%;
+}
+.agency-white .agency__thumb .thumb-two {
+  margin-top: 100px;
+  z-index: 2;
+  position: relative;
+  max-width: 80%;
+}
+.agency-white .agency__content {
+  padding-left: 70px;
+}
+.agency-white .star {
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  z-index: -1;
+}
+.agency-white .skill-wrap {
+  margin-top: 40px;
+}
+.agency-white .skill-bar-single {
+  margin-bottom: 30px;
+}
+.agency-white .skill-bar-single:nth-last-of-type(1) {
+  margin-bottom: 0px;
+}
+.agency-white .skill-bar-wrapper {
+  margin-top: 15px;
+}
+.agency-white .skill-bar {
+  height: 8px;
+  border-radius: 100px;
+  background-color: #b2b2b2;
+  position: relative;
+}
+.agency-white .skill-bar-percent {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  background-color: #333;
+  border-radius: inherit;
+}
+.agency-white .percent-value {
+  position: absolute;
+  bottom: calc(100% + 15px);
+  right: 0px;
+  color: #333;
+}
+.agency-white .dot-large {
+  position: absolute;
+  bottom: 40px;
+  right: 4%;
+  max-width: 25vw;
+  z-index: -1;
+}
+.agency-white h2 {
+  color: #333;
+}
+.agency-white p {
+  color: #333;
 }
 .agency-two .agency__thumb::before,
 .agency-two .agency__thumb::after {
@@ -3494,6 +3600,9 @@ i {
 .blog {
   background-color: var(--tertiary-color);
 }
+.blog-white {
+  background-color: var(--white);
+}
 .blog .blog__single-thumb a {
   width: 100%;
 }
@@ -3528,6 +3637,47 @@ i {
 }
 .blog .blog__single-meta p {
   color: var(--secondary-color);
+}
+.blog-white .blog__single-thumb a {
+  width: 100%;
+}
+.blog-white .blog__single-thumb a img {
+  width: 100%;
+  min-height: 360px;
+}
+.blog-white .blog__single-content {
+  margin-top: 40px;
+}
+.blog-white .blog__single-meta {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  row-gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.blog-white .blog__single-meta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  line-height: 1;
+  border: 1px solid #414141;
+  color: var(--primary-color);
+  border-radius: 30px;
+  text-transform: uppercase;
+}
+.blog-white .blog__single-meta a i {
+  transform: rotate(-45deg);
+}
+.blog-white .blog__single-meta p {
+  color: var(--secondary-color);
+}
+.blog-white h2,
+.blog-white h4,
+.blog-white a,
+.blog-white p {
+  color: #333;
 }
 .blog-two {
   background-color: var(--black);
@@ -6674,6 +6824,9 @@ i {
   .agency .agency__content {
     padding-left: 0px;
   }
+  .agency-white .agency__content {
+    padding-left: 0px;
+  }
   .banner-two .banner-two__content .banner-two__content-cta {
     gap: 30px;
   }
@@ -6793,7 +6946,16 @@ i {
   .cmn-banner .title {
     margin-top: -8px;
   }
+  .cmn-banner-white {
+    padding: 160px 0px 100px;
+  }
+  .cmn-banner-white .title {
+    margin-top: -8px;
+  }
   .agency .agency__content {
+    padding-left: 0px;
+  }
+  .agency-white .agency__content {
     padding-left: 0px;
   }
   .portfolio .portfolio__text-slider,
