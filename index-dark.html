@@ -1374,7 +1374,6 @@
           <!-- ==== footer start ==== -->
           <footer
             class="footer section pb-0"
-            data-background="assets/images/footer/footer-bg.png"
           >
             <div class="container">
               <div class="row gaper">
@@ -1805,6 +1804,7 @@
   const payBox = document.getElementById("payContainer");
 
   toggleBtn.onclick = () => {
+    const e = new Event("click");
     toggleBtn.classList.add("hidden");
     inputWrap.classList.remove("hidden");
     inputWrap.querySelector("input").focus(); // Focus input
@@ -1926,8 +1926,8 @@
     <script src="assets/vendor/vanilla-tilt/tilt.jquery.js"></script>
     <!-- ==== / js dependencies end ==== -->
     <!-- plugins js -->
-    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/plugins.js" defer></script>
     <!-- main js -->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js" defer></script>
   </body>
 </html>
