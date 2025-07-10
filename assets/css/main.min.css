@@ -23,7 +23,6 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  scroll-behavior: smooth;
 }
 *::-moz-selection {
   color: #fff;
@@ -38,6 +37,7 @@ html {
   overflow-y: auto;
   height: auto;
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 body {
   font-family: var(--theme-font);

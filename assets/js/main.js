@@ -367,15 +367,195 @@
 // 	});
 // })(jQuery);
 
+// (function($) {
+//   "use strict";
+
+//   jQuery(document).ready(function() {
+//     // 01. preloader
+//     window.addEventListener('load', function() {
+//       const preloader = document.querySelector('.preloader');
+//       if (preloader) preloader.style.display = 'none';
+//     });
+
+//     // 02. primary navbar sticky
+//     const handleScrollSticky = () => {
+//       const scroll = $(window).scrollTop();
+//       $(".primary-navbar").toggleClass("navbar-active", scroll >= 100);
+//       $(".progress-wrap").toggleClass("active-progress", scroll >= 100);
+//     };
+
+//     handleScrollSticky();
+//     $(window).on("scroll", handleScrollSticky);
+
+//     // 03. data background
+//     $("[data-background]").each(function() {
+//       $(this).css("background-image", `url(${ $(this).attr("data-background") })`);
+//     });
+
+//     // 04. custom cursor
+//     function itCursor() {
+//       const $inner = $(".cursor-inner");
+//       const $outer = $(".cursor-outer");
+
+//       if ($inner.length && $outer.length) {
+//         $(window).on("mousemove", function(e) {
+//           $inner.css({ transform: `translate(${e.clientX}px, ${e.clientY}px)` });
+//           $outer.css({ transform: `translate(${e.clientX}px, ${e.clientY}px)` });
+//         });
+
+//         $("body").on("mouseenter", "a, button, .cursor-pointer", function() {
+//           $inner.addClass("cursor-hover");
+//           $outer.addClass("cursor-hover");
+//         }).on("mouseleave", "a, button, .cursor-pointer", function() {
+//           $inner.removeClass("cursor-hover");
+//           $outer.removeClass("cursor-hover");
+//         });
+//       }
+//     }
+//     itCursor();
+
+//     // 05. mobile menu
+//     if ($(".mobile-menu").length) {
+//       $(".mobile-menu__list").html($(".navbar__menu").html());
+//       $(".mobile-menu__options").html($(".navbar__mobile-options").html());
+
+//       $(".navbar__dropdown-label").on("click", function() {
+//         $(this).toggleClass("navbar__item-active");
+//         $(this).siblings(".navbar__sub-menu").slideToggle(300);
+//         $(this).parent().siblings().find(".navbar__sub-menu").slideUp(300);
+//         $(this).parent().siblings().find(".navbar__item-active").removeClass("navbar__item-active");
+//       });
+//     }
+
+//     // Open and close menu
+//     $(".open-mobile-menu, .open-offcanvas-nav").on("click", function() {
+//       $(".mobile-menu__backdrop").addClass("mobile-menu__backdrop-active");
+//       $(".mobile-menu").addClass("show-menu");
+//     });
+
+//     $(".close-mobile-menu, .mobile-menu__backdrop").on("click", function() {
+//       $(".mobile-menu").removeClass("show-menu");
+//       $(".mobile-menu__backdrop").removeClass("mobile-menu__backdrop-active");
+//     });
+
+//     // Resize cleanup
+//     $(window).on("resize", function() {
+//       $("body").removeClass("body-active");
+//       $(".mobile-menu").removeClass("show-menu");
+//       $(".mobile-menu__backdrop").removeClass("mobile-menu__backdrop-active");
+//     });
+
+//     // Offcanvas menu
+//     $(".offcanvas-menu .navbar__dropdown-label").on("click", function() {
+//       $(this).toggleClass("navbar__item-active");
+//       $(this).siblings(".navbar__sub-menu").slideToggle(300);
+//       $(this).parent().siblings().find(".navbar__sub-menu").slideUp(300);
+//       $(this).parent().siblings().find(".navbar__item-active").removeClass("navbar__item-active");
+//     });
+
+//     $(".open-offcanvas-nav").on("click", function() {
+//       $(".offcanvas-menu").addClass("show-offcanvas-menu");
+//     });
+
+//     $(".close-offcanvas-menu, .offcanvas-menu__backdrop").on("click", function() {
+//       $(".offcanvas-menu").removeClass("show-offcanvas-menu");
+//     });
+
+//     // Portfolio hover effect (optimized)
+//     $(".portfolio__single").on("mouseenter", function() {
+//       $(".portfolio__single").removeClass("portfolio__single-active");
+//       $(this).addClass("portfolio__single-active");
+//     });
+
+//     // FAQ toggle
+//     $(".service-f-single:first").addClass("service-f-single-active");
+//     $(".service-f-single:first .p-single").show();
+
+//     $(".toggle-service-f").on("click", function() {
+//       const $parent = $(this).parent();
+//       $parent.toggleClass("service-f-single-active");
+//       $parent.find(".p-single").slideToggle(600);
+//       $parent.siblings().removeClass("service-f-single-active");
+//       $parent.siblings().find(".p-single").slideUp(600);
+//     });
+
+//     // Hover images with cursor – disabled for performance
+//     const isDesktop = window.innerWidth > 576;
+
+//     if (isDesktop) {
+//       // 👇 Prevent jank by removing setInterval usage
+//       $(".offer__cta-single").on("mousemove", function(e) {
+//         const $img = $(this).find("img.hover-img");
+//         if ($img.length) {
+//           const offset = $(this).offset();
+//           const dx = e.pageX - offset.left;
+//           const dy = e.pageY - offset.top;
+//           $img.css("transform", `translate(${dx}px, ${dy}px) rotate(15deg)`);
+//         }
+//       });
+//     }
+
+//     // Blog hover GSAP optimized
+//     $(".blog-three__single").on("mouseenter", function() {
+//       if ($(this).hasClass("active")) return;
+
+//       const index = $(this).index();
+//       $(".blog-three__thumb .blog-single-img").hide().eq(index).show();
+
+//       gsap.fromTo(
+//         `.blog-three__thumb .blog-single-img:eq(${index})`,
+//         { opacity: 0, scale: 0 },
+//         { opacity: 1, scale: 1, duration: 0.4 }
+//       );
+
+//       $(".blog-three__single").removeClass("active");
+//       $(this).addClass("active");
+//     });
+
+//     // FAQ accordion
+//     $(".accordion-button").on("click", function() {
+//       $(".accordion-item").removeClass("faq-one-active");
+//       $(this).closest(".accordion-item").addClass("faq-one-active");
+//     });
+
+//     // Footer year
+//     $("#copyYear").text(new Date().getFullYear());
+
+//     // Scroll to top progress
+//     if ($(".progress-wrap").length) {
+//       const progressPath = document.querySelector(".progress-wrap path");
+//       const pathLength = progressPath.getTotalLength();
+
+//       progressPath.style.strokeDasharray = pathLength;
+//       progressPath.style.strokeDashoffset = pathLength;
+
+//       const updateProgress = () => {
+//         const scroll = $(window).scrollTop();
+//         const height = $(document).height() - $(window).height();
+//         progressPath.style.strokeDashoffset = pathLength - (scroll * pathLength) / height;
+//       };
+
+//       $(window).on("scroll", updateProgress);
+//       updateProgress();
+
+//       $(".progress-wrap").on("click", function(e) {
+//         e.preventDefault();
+//         $("html, body").animate({ scrollTop: 0 }, 1000);
+//       });
+//     }
+//   });
+// })(jQuery);
+
+
 (function($) {
   "use strict";
 
   jQuery(document).ready(function() {
     // 01. preloader
-    window.addEventListener('load', function() {
-      const preloader = document.querySelector('.preloader');
-      if (preloader) preloader.style.display = 'none';
-    });
+    // window.addEventListener('load', function() {
+    //   const preloader = document.querySelector('.preloader');
+    //   if (preloader) preloader.style.display = 'none';
+    // });
 
     // 02. primary navbar sticky
     const handleScrollSticky = () => {
@@ -483,7 +663,6 @@
     const isDesktop = window.innerWidth > 576;
 
     if (isDesktop) {
-      // 👇 Prevent jank by removing setInterval usage
       $(".offer__cta-single").on("mousemove", function(e) {
         const $img = $(this).find("img.hover-img");
         if ($img.length) {
