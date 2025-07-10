@@ -7051,6 +7051,21 @@ i {
     padding-right: 0px;
   }
 }
+@media (max-width: 991px) {
+  .project-sl {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .project-sl__single {
+    flex: 0 0 80%;
+    scroll-snap-align: start;
+    margin-right: 20px;
+  }
+}
+
 @media only screen and (max-width: 767.98px) {
   .tertiary--navbar .navbar {
     gap: 24px;

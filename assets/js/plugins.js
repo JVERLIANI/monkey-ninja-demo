@@ -734,27 +734,28 @@
 		});
 
 		// 26. project horizontal move
-		if ($(".project-sl").length > 0) {
-			let sections = gsap.utils.toArray(".project-sl__single");
+		if (window.innerWidth > 991 && $(".project-sl").length > 0) {
+  let sections = gsap.utils.toArray(".project-sl__single");
 
-			gsap.to(sections, {
-				xPercent: -100 * (sections.length - 1),
-				ease: "power1.out",
-				scrollTrigger: {
-					trigger: ".project-sl",
-					start: "top top",
-					end: () => "+=" + $(".project-sl").width(),
-					scrub: 0.5,
-					pin: true,
-					anticipatePin: 1,
-					snap: {
-						snapTo: 1 / (sections.length - 1),
-						duration: { min: 0.2, max: 0.4 },
-						ease: "power1.inOut"
-					}
-				}
-			});
-		}
+  gsap.to(sections, {
+    xPercent: -100 * (sections.length - 1),
+    ease: "power1.out",
+    scrollTrigger: {
+      trigger: ".project-sl",
+      start: "top top",
+      end: () => "+=" + $(".project-sl").width(),
+      scrub: 0.5,
+      pin: true,
+      anticipatePin: 1,
+      snap: {
+        snapTo: 1 / (sections.length - 1),
+        duration: { min: 0.2, max: 0.4 },
+        ease: "power1.inOut"
+      }
+    }
+  });
+}
+
 
 
 		// 27. split title
